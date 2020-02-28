@@ -7,38 +7,49 @@
 //
 
 import UIKit
+import CoreMotion
+import AVFoundation
 
 class ViewController: UIViewController {
+    
     var firstView: UIView!
     var secondView: UIView!
+    let motionManager = CMMotionManager()
+    @IBOutlet weak var btnStart: UIButton!
+    var audioPlayer : AVAudioPlayer?
+    
+    @IBOutlet weak var button2: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstView = UIView(frame: CGRect(x: 32, y: 32, width: 128, height: 128))
-        secondView = UIView(frame: CGRect(x: 32, y: 32, width: 128, height: 128))
-
-        firstView.backgroundColor = UIColor.red
-        secondView.backgroundColor = UIColor.blue
-
-        secondView.isHidden = true
-
-        view.addSubview(firstView)
-        view.addSubview(secondView)
-
-
-        perform(#selector(flip), with: nil, afterDelay: 2)
+        motionManager.accelerometerUpdateInterval = 0.5
+        motionManager.startAccelerometerUpdates(to: OperationQueue.main) { (data, error) in
+                        print("Acceleration Z : ", data?.acceleration.z as Any)
+        }
+        Timer.scheduledTimer(timeInterval: 17.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        
+        btnStart.addTarget(self, action: #selector(onStartPressed), for: UIControl.Event.touchUpInside)
+        
+        button2.addTarget(self, action: #selector(onStartPressed), for: UIControl.Event.touchUpInside)
     }
-
-    @objc func flip() {
-        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromLeft]
-
-        UIView.transition(with: firstView, duration: 1.0, options: transitionOptions, animations: {
-            self.firstView.isHidden = true
-        })
-
-        UIView.transition(with: secondView, duration: 1.0, options: transitionOptions, animations: {
-            self.secondView.isHidden = false
-        })
+    
+    @objc func countDown(caller : Any?) {
+//        print("count down")
+    }
+    
+    @objc func onStartPressed() {
+        print("onStartPressed")
+        guard let fileURL = Bundle.main.path(forResource: "alarm", ofType: "wav") else { return }
+        print("Continue processing")
+        var user = User()
+        var user1 = user
+        user.name = "Hung"
+        user1.name = "Viet"
+        print(" \(user.name) va \(user1.name)")
+        let url = URL(fileURLWithPath: fileURL)
+        audioPlayer = try? AVAudioPlayer(contentsOf: url)
+        audioPlayer?.numberOfLoops = 1
+        audioPlayer?.play()
     }
 }
 

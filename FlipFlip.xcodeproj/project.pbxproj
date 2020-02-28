@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BDCF8D832408EBE600A0AA1B /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = BDCF8D822408EBE600A0AA1B /* alarm.wav */; };
+		BDCF8D85240929B700A0AA1B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCF8D84240929B700A0AA1B /* User.swift */; };
 		BDE6F21023E756B200F7D271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE6F20F23E756B200F7D271 /* AppDelegate.swift */; };
 		BDE6F21223E756B200F7D271 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE6F21123E756B200F7D271 /* SceneDelegate.swift */; };
 		BDE6F21423E756B200F7D271 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE6F21323E756B200F7D271 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BDCF8D822408EBE600A0AA1B /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
+		BDCF8D84240929B700A0AA1B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDE6F20C23E756B200F7D271 /* FlipFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE6F20F23E756B200F7D271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDE6F21123E756B200F7D271 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BDCF8D812408EBCF00A0AA1B /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				BDCF8D822408EBE600A0AA1B /* alarm.wav */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		BDE6F20323E756B200F7D271 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +91,7 @@
 		BDE6F20E23E756B200F7D271 /* FlipFlip */ = {
 			isa = PBXGroup;
 			children = (
+				BDCF8D812408EBCF00A0AA1B /* Sound */,
 				BDE6F20F23E756B200F7D271 /* AppDelegate.swift */,
 				BDE6F21123E756B200F7D271 /* SceneDelegate.swift */,
 				BDE6F21323E756B200F7D271 /* ViewController.swift */,
@@ -86,6 +99,7 @@
 				BDE6F21823E756B800F7D271 /* Assets.xcassets */,
 				BDE6F21A23E756B800F7D271 /* LaunchScreen.storyboard */,
 				BDE6F21D23E756B800F7D271 /* Info.plist */,
+				BDCF8D84240929B700A0AA1B /* User.swift */,
 			);
 			path = FlipFlip;
 			sourceTree = "<group>";
@@ -182,6 +196,7 @@
 			files = (
 				BDE6F21C23E756B800F7D271 /* LaunchScreen.storyboard in Resources */,
 				BDE6F21923E756B800F7D271 /* Assets.xcassets in Resources */,
+				BDCF8D832408EBE600A0AA1B /* alarm.wav in Resources */,
 				BDE6F21723E756B200F7D271 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDCF8D85240929B700A0AA1B /* User.swift in Sources */,
 				BDE6F21423E756B200F7D271 /* ViewController.swift in Sources */,
 				BDE6F21023E756B200F7D271 /* AppDelegate.swift in Sources */,
 				BDE6F21223E756B200F7D271 /* SceneDelegate.swift in Sources */,
@@ -294,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -348,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -362,7 +378,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L5Q8584KE5;
 				INFOPLIST_FILE = FlipFlip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -371,6 +388,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.FlipFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = dev_provisioning_fliflip;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -380,7 +398,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L5Q8584KE5;
 				INFOPLIST_FILE = FlipFlip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -389,6 +408,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.FlipFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = dev_provisioning_fliflip;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
