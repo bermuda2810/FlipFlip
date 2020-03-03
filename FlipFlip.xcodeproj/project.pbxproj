@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BDCF8D832408EBE600A0AA1B /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = BDCF8D822408EBE600A0AA1B /* alarm.wav */; };
 		BDCF8D85240929B700A0AA1B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCF8D84240929B700A0AA1B /* User.swift */; };
+		BDDC480E240E3ED9001C9080 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDC480C240E3BDE001C9080 /* CircleView.swift */; };
 		BDE6F21023E756B200F7D271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE6F20F23E756B200F7D271 /* AppDelegate.swift */; };
 		BDE6F21223E756B200F7D271 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE6F21123E756B200F7D271 /* SceneDelegate.swift */; };
 		BDE6F21423E756B200F7D271 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE6F21323E756B200F7D271 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		BDCF8D822408EBE600A0AA1B /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		BDCF8D84240929B700A0AA1B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BDDC480C240E3BDE001C9080 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		BDE6F20C23E756B200F7D271 /* FlipFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE6F20F23E756B200F7D271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDE6F21123E756B200F7D271 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				BDE6F20F23E756B200F7D271 /* AppDelegate.swift */,
 				BDE6F21123E756B200F7D271 /* SceneDelegate.swift */,
 				BDE6F21323E756B200F7D271 /* ViewController.swift */,
+				BDDC480C240E3BDE001C9080 /* CircleView.swift */,
 				BDE6F21523E756B200F7D271 /* Main.storyboard */,
 				BDE6F21823E756B800F7D271 /* Assets.xcassets */,
 				BDE6F21A23E756B800F7D271 /* LaunchScreen.storyboard */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDC480E240E3ED9001C9080 /* CircleView.swift in Sources */,
 				BDCF8D85240929B700A0AA1B /* User.swift in Sources */,
 				BDE6F21423E756B200F7D271 /* ViewController.swift in Sources */,
 				BDE6F21023E756B200F7D271 /* AppDelegate.swift in Sources */,
@@ -388,7 +392,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.FlipFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev_provisioning_fliflip;
+				PROVISIONING_PROFILE_SPECIFIER = provisioning_development_flipflip_v1;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -408,7 +412,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.FlipFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev_provisioning_fliflip;
+				PROVISIONING_PROFILE_SPECIFIER = provisioning_development_flipflip;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -12,40 +12,81 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var circleTimerView: CircleView!
     var firstView: UIView!
     var secondView: UIView!
     let motionManager = CMMotionManager()
     @IBOutlet weak var btnStart: UIButton!
     var audioPlayer : AVAudioPlayer?
+    var prepareTime : Int = 60 // 5seconds
+    var learningTime : Int = 90*60 // 90minutes
     
-    @IBOutlet weak var button2: UIButton!
+    var currentTime : Int = 0
+    var stateTimer : Int = 0 // Start
+    var currentTimer : Timer? = nil
     
+    let PREPARING : Int = 0
+    let LEARNING : Int = 1
+    let FINISHED : Int = 2
+    
+    var facing : Int = 0 // Default
+    
+    @IBOutlet weak var lblTimer: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         motionManager.accelerometerUpdateInterval = 0.5
         motionManager.startAccelerometerUpdates(to: OperationQueue.main) { (data, error) in
-                        print("Acceleration Z : ", data?.acceleration.z as Any)
+//                        print("Acceleration Z : ", data?.acceleration.z as Any)
         }
-        Timer.scheduledTimer(timeInterval: 17.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
-        
         btnStart.addTarget(self, action: #selector(onStartPressed), for: UIControl.Event.touchUpInside)
-        
-        button2.addTarget(self, action: #selector(onStartPressed), for: UIControl.Event.touchUpInside)
     }
+    
     
     @objc func countDown(caller : Any?) {
-//        print("count down")
+        currentTime -= 1
+        let minute = currentTime / 60
+        let second = currentTime % 60
+        let strTime = "\(minute):\(second)"
+        lblTimer.text = strTime
+        if currentTime == 0 {
+            currentTimer?.invalidate()
+//            onTimerFinished()
+        }
+        circleTimerView.countDown()
     }
     
+    private func onTimerFinished() {
+        if stateTimer == PREPARING {
+            stateTimer = LEARNING
+        }else if stateTimer == LEARNING{
+            stateTimer = FINISHED
+        }
+        handleState()
+    }
+ 
     @objc func onStartPressed() {
-        print("onStartPressed")
+        handleState()
+    }
+    
+    private func handleState() {
+        if (stateTimer == PREPARING) {
+            currentTime = prepareTime
+            prepareToCountdown()
+        }else if(stateTimer == LEARNING){
+            currentTime = learningTime
+            prepareToCountdown()
+        }else {
+            print("Finsihed")
+        }
+    }
+    
+    private func prepareToCountdown() {
+        circleTimerView.setData(seconds: currentTime)
+        currentTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+    }
+    
+    private func playSound() {
         guard let fileURL = Bundle.main.path(forResource: "alarm", ofType: "wav") else { return }
-        print("Continue processing")
-        var user = User()
-        var user1 = user
-        user.name = "Hung"
-        user1.name = "Viet"
-        print(" \(user.name) va \(user1.name)")
         let url = URL(fileURLWithPath: fileURL)
         audioPlayer = try? AVAudioPlayer(contentsOf: url)
         audioPlayer?.numberOfLoops = 1
