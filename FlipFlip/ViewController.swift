@@ -52,7 +52,7 @@ class ViewController: UIViewController {
             currentTimer?.invalidate()
 //            onTimerFinished()
         }
-        circleTimerView.countDown()
+//        circleTimerView.countDown()
     }
     
     private func onTimerFinished() {
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     }
     
     private func prepareToCountdown() {
-        circleTimerView.setData(seconds: currentTime)
+        circleTimerView.startAnimationCountdown(seconds: currentTime)
         currentTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
     

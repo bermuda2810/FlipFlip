@@ -14,8 +14,8 @@ class CircleView : UIView{
     private let lineWidth : CGFloat = 12.0
     private let _360radian = 2*CGFloat.pi
     private var endAngle = -CGFloat.pi/2.0 + 2*CGFloat.pi
-    private var totalSeconds = 1*60
-    private var remainingSeconds = 1*60
+    private var totalSeconds : Double = 1*60
+    private var remainingSeconds : Double = 1*60
     private var gradient : CAGradientLayer? = nil
     
     override func draw(_ rect: CGRect) {
@@ -50,14 +50,40 @@ class CircleView : UIView{
       return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).cgColor
     }
     
-    func setData(seconds : Int) {
-        self.totalSeconds = seconds
-        self.remainingSeconds = seconds
+    func startAnimationCountdown(seconds : Int) {
+        self.totalSeconds = Double.init(seconds)
+        self.remainingSeconds = Double.init(seconds)
+        smoothTimer()
     }
     
-    func countDown() {
-        self.remainingSeconds -= 1
-        self.endAngle = startAngle + (CGFloat.init(remainingSeconds)/CGFloat.init(totalSeconds))*_360radian
+    private func smoothTimer() {
+        let displayLink = CADisplayLink(target: self, selector: #selector(animationDidUpdate))
+        displayLink.preferredFramesPerSecond = 30
+        displayLink.add(to: .main, forMode: .default)
+        updateValues()
+    }
+    
+    var animationComplete = false
+    var lastUpdateTime = CACurrentMediaTime()
+    
+    func updateValues() {
+        self.countDown(factor: 0)
+        lastUpdateTime = CACurrentMediaTime()
+        animationComplete = false
+    }
+    
+    @objc private func animationDidUpdate(displayLink: CADisplayLink) {
+        if(!animationComplete) {
+            let now = CACurrentMediaTime()
+            let interval = (now - lastUpdateTime)/Double.init(totalSeconds)
+            self.countDown(factor: interval)
+            animationComplete = interval >= 1.0
+        }
+    }
+    
+    func countDown(factor : Double) {
+        self.remainingSeconds -= factor
+        self.endAngle = startAngle + _360radian * (1.0 - CGFloat.init(factor))
         self.setNeedsDisplay()
     }
 }
