@@ -18,12 +18,12 @@ class ViewController: UIViewController {
     let motionManager = CMMotionManager()
     @IBOutlet weak var btnStart: UIButton!
     var audioPlayer : AVAudioPlayer?
-    var prepareTime : Int = 60 // 5seconds
+    var prepareTime : Int = 10 // 5seconds
     var learningTime : Int = 90*60 // 90minutes
     
     var currentTime : Int = 0
     var stateTimer : Int = 0 // Start
-    var currentTimer : Timer? = nil
+    var currentTimer : MyTimer? = nil
     
     let PREPARING : Int = 0
     let LEARNING : Int = 1
@@ -52,7 +52,6 @@ class ViewController: UIViewController {
             currentTimer?.invalidate()
 //            onTimerFinished()
         }
-//        circleTimerView.countDown()
     }
     
     private func onTimerFinished() {
@@ -82,7 +81,8 @@ class ViewController: UIViewController {
     
     private func prepareToCountdown() {
         circleTimerView.startAnimationCountdown(seconds: currentTime)
-        currentTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+//        currentTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        currentTimer = MyTimer.scheduledTimer(interval: 1.0, target: self, selector: #selector(countDown), repeate: true)
     }
     
     private func playSound() {

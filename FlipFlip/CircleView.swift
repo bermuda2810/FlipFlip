@@ -17,6 +17,8 @@ class CircleView : UIView{
     private var totalSeconds : Double = 1*60
     private var remainingSeconds : Double = 1*60
     private var gradient : CAGradientLayer? = nil
+    private var animationComplete = false
+    private var lastUpdateTime = CACurrentMediaTime()
     
     override func draw(_ rect: CGRect) {
         let centerPoint = CGPoint.init(x: rect.width/2.0, y: rect.height/2.0)
@@ -53,23 +55,20 @@ class CircleView : UIView{
     func startAnimationCountdown(seconds : Int) {
         self.totalSeconds = Double.init(seconds)
         self.remainingSeconds = Double.init(seconds)
+        animationComplete = false
         smoothTimer()
     }
     
     private func smoothTimer() {
         let displayLink = CADisplayLink(target: self, selector: #selector(animationDidUpdate))
-        displayLink.preferredFramesPerSecond = 30
+        displayLink.preferredFramesPerSecond = 60
         displayLink.add(to: .main, forMode: .default)
         updateValues()
     }
     
-    var animationComplete = false
-    var lastUpdateTime = CACurrentMediaTime()
-    
     func updateValues() {
         self.countDown(factor: 0)
         lastUpdateTime = CACurrentMediaTime()
-        animationComplete = false
     }
     
     @objc private func animationDidUpdate(displayLink: CADisplayLink) {

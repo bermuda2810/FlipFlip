@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD2239E324109C890060E8AA /* MyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2239E224109C890060E8AA /* MyTimer.swift */; };
 		BDCF8D832408EBE600A0AA1B /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = BDCF8D822408EBE600A0AA1B /* alarm.wav */; };
 		BDCF8D85240929B700A0AA1B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCF8D84240929B700A0AA1B /* User.swift */; };
 		BDDC480E240E3ED9001C9080 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDC480C240E3BDE001C9080 /* CircleView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD2239E224109C890060E8AA /* MyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimer.swift; sourceTree = "<group>"; };
 		BDCF8D822408EBE600A0AA1B /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		BDCF8D84240929B700A0AA1B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDDC480C240E3BDE001C9080 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				BDE6F21A23E756B800F7D271 /* LaunchScreen.storyboard */,
 				BDE6F21D23E756B800F7D271 /* Info.plist */,
 				BDCF8D84240929B700A0AA1B /* User.swift */,
+				BD2239E224109C890060E8AA /* MyTimer.swift */,
 			);
 			path = FlipFlip;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDDC480E240E3ED9001C9080 /* CircleView.swift in Sources */,
+				BD2239E324109C890060E8AA /* MyTimer.swift in Sources */,
 				BDCF8D85240929B700A0AA1B /* User.swift in Sources */,
 				BDE6F21423E756B200F7D271 /* ViewController.swift in Sources */,
 				BDE6F21023E756B200F7D271 /* AppDelegate.swift in Sources */,
